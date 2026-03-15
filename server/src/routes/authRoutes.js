@@ -15,7 +15,7 @@ const generateToken = (id) => {
 // Register User (name removed)
 router.post("/register", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -28,13 +28,18 @@ router.post("/register", async (req, res) => {
       return res.status(400).json({ error: "Password must be at least 6 characters" });
     }
 
-    // Create new user without name
-    const newUser = await User.create({ email, password });
+    // Create new user (name is optional)
+    const newUser = await User.create({ name: name || "", email, password });
+
+    // Generate token
+    const token = generateToken(newUser._id);
 
     res.status(201).json({
       message: "User registered successfully",
+      token,
       user: {
         id: newUser._id,
+        name: newUser.name,
         email: newUser.email,
       },
     });

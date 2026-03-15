@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+.pnp.*
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Server specific
+uploads/
+*.tmp
+temp/
+
+# Cloudinary (if used locally)
+cloudinary.json
+
+# MongoDB data (local)
+data/
+*.dump
+
+# Poster uploads (generated content)
+client/public/posters/
+server/public/posters/
+
+# Thumbnails/cache
+thumbnails/
+*.thumbnail
+
+# Misc
+*.bak
+*.backup

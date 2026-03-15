@@ -84,4 +84,35 @@ router.get("/download/:filename", (req, res) => {
   res.download(filePath);
 });
 
+// ✅ Get User's Posters
+router.get("/user", authMiddleware, async (req, res) => {
+  try {
+    const posters = await Poster.find({ user: req.user._id })
+      .sort({ createdAt: -1 })
+      .select("-__v");
+    
+    res.status(200).json({ posters });
+  } catch (err) {
+    console.error("Error fetching posters:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// ✅ Delete Poster
+router.delete("/:id", authMiddleware, async (req, res) => {
+  try {
+    const poster = await Poster.findOne({ _id: req.params.id, user: req.user._id });
+    
+    if (!poster) {
+      return res.status(404).json({ error: "Poster not found" });
+    }
+
+    await Poster.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "Poster deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting poster:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 export default router;

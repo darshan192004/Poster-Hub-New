@@ -7,7 +7,8 @@ import mongoose from "mongoose";
 import path from "path";
 import { fileURLToPath } from "url";
 import posterRoutes from "./routes/posterRoutes.js";
-import authRoutes from "./routes/authRoutes.js"; // ✅ Add this
+import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -34,7 +35,8 @@ app.use("/posters", express.static(path.join(__dirname, "public/posters")));
 
 // ✅ API Routes
 app.use("/api/posters", posterRoutes);
-app.use("/api/auth", authRoutes); // ✅ Now login, register, and profile will work
+app.use("/api/auth", authRoutes);
+app.use("/api/auth", userRoutes);
 
 // ✅ MongoDB connection
 const connectDB = async () => {
