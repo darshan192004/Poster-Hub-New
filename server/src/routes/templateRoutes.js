@@ -1,26 +1,31 @@
 import express from "express";
+import {
+  getAllTemplates,
+  getTemplatesByCategory,
+  getTemplateById,
+  searchTemplates,
+  createTemplate,
+  updateTemplate,
+  deleteTemplate,
+  getCategories,
+  getFeaturedTemplates,
+  bulkCreateTemplates
+} from "../controller/templateController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
+
 const router = express.Router();
 
-const templateCategories = [
-  {
-    name: "Birthday",
-    templates: [
-      { name: "Kids Birthday", image: "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1700000000/posters/kids_birthday.jpg" },
-      { name: "Adult Birthday", image: "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1700000000/posters/adult_birthday.jpg" }
-    ],
-  },
-  {
-    name: "Business",
-    templates: [
-      { name: "Corporate Event", image: "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1700000000/posters/corporate_event.jpg" },
-      { name: "Product Launch", image: "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1700000000/posters/product_launch.jpg" }
-    ],
-  }
-];
+router.get("/categories", getCategories);
+router.get("/featured", getFeaturedTemplates);
+router.get("/search", searchTemplates);
+router.get("/:category", getTemplatesByCategory);
+router.get("/", getAllTemplates);
+router.get("/:id", getTemplateById);
 
-// API Route to Get Templates
-router.get("/", (req, res) => {
-  res.json(templateCategories);
-});
+router.post("/bulk", authMiddleware, bulkCreateTemplates);
+router.post("/", authMiddleware, createTemplate);
+
+router.put("/:id", authMiddleware, updateTemplate);
+router.delete("/:id", authMiddleware, deleteTemplate);
 
 export default router;

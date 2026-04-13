@@ -66,3 +66,5 @@ thumbnails/
 # Misc
 *.bak
 *.backup
+# Added by code-review-graph
+.code-review-graph/

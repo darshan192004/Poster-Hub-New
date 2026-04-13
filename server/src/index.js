@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import posterRoutes from "./routes/posterRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import templateRoutes from "./routes/templateRoutes.js";
 
 dotenv.config();
 
@@ -37,14 +38,12 @@ app.use("/posters", express.static(path.join(__dirname, "public/posters")));
 app.use("/api/posters", posterRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/auth", userRoutes);
+app.use("/api/templates", templateRoutes);
 
 // ✅ MongoDB connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("✅ MongoDB connected");
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error);
