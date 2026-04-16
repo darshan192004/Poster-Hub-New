@@ -1,0 +1,200 @@
+{
+  "registry_version": "1.0.0",
+  "last_updated": "2026-04-14",
+  "templates": [
+    {
+      "id": "insta-travel-1",
+      "name": "Wanderlust",
+      "category": "Social Media",
+      "subcategory": "Instagram Post",
+      "width": 1080,
+      "height": 1080,
+      "preview_description": "Modern Minimalist",
+      "style_category": "travel",
+      "color_palette": ["#0f172a", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "insta-sale-1",
+      "name": "Flash Sale Alert",
+      "category": "Social Media",
+      "subcategory": "Instagram Post",
+      "width": 1080,
+      "height": 1080,
+      "preview_description": "Bold High Impact",
+      "style_category": "sale",
+      "color_palette": ["#dc2626", "#fef3c7", "#ffffff"]
+    },
+    {
+      "id": "insta-birthday-1",
+      "name": "Birthday Burst",
+      "category": "Social Media",
+      "subcategory": "Instagram Post",
+      "width": 1080,
+      "height": 1080,
+      "preview_description": "Playful Celebration",
+      "style_category": "birthday",
+      "color_palette": ["#fce7f3", "#db2777", "#8b5cf6"]
+    },
+    {
+      "id": "insta-food-1",
+      "name": "Foodie Heaven",
+      "category": "Social Media",
+      "subcategory": "Instagram Post",
+      "width": 1080,
+      "height": 1080,
+      "preview_description": "Gourmet Elegant",
+      "style_category": "food",
+      "color_palette": ["#1c1917", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "fb-cover-corporate-1",
+      "name": "Corporate Cover",
+      "category": "Social Media",
+      "subcategory": "Facebook Cover",
+      "width": 820,
+      "height": 312,
+      "preview_description": "Corporate Professional",
+      "style_category": "business",
+      "color_palette": ["#1e3a8a", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "linkedin-banner-1",
+      "name": "Professional Banner",
+      "category": "Social Media",
+      "subcategory": "LinkedIn Banner",
+      "width": 1584,
+      "height": 396,
+      "preview_description": "Executive Minimalist",
+      "style_category": "business",
+      "color_palette": ["#0f172a", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "twitter-announce-1",
+      "name": "Product Launch",
+      "category": "Social Media",
+      "subcategory": "Twitter Post",
+      "width": 1600,
+      "height": 900,
+      "preview_description": "Tech Startup",
+      "style_category": "tech",
+      "color_palette": ["#0f172a", "#6366f1", "#22c55e"]
+    },
+    {
+      "id": "resume-modern-1",
+      "name": "Executive Resume",
+      "category": "Business",
+      "subcategory": "Resume",
+      "width": 794,
+      "height": 1123,
+      "preview_description": "Clean Corporate",
+      "style_category": "professional",
+      "color_palette": ["#1e3a8a", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "presentation-title-1",
+      "name": "Keynote Title",
+      "category": "Business",
+      "subcategory": "Presentation",
+      "width": 1920,
+      "height": 1080,
+      "preview_description": "Modern Corporate",
+      "style_category": "corporate",
+      "color_palette": ["#0f172a", "#6366f1", "#ffffff"]
+    },
+    {
+      "id": "business-card-1",
+      "name": "Executive Card",
+      "category": "Business",
+      "subcategory": "Business Card",
+      "width": 1050,
+      "height": 600,
+      "preview_description": "Premium Minimalist",
+      "style_category": "premium",
+      "color_palette": ["#1e3a8a", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "flyer-sale-1",
+      "name": "Mega Sale",
+      "category": "Marketing",
+      "subcategory": "Flyer",
+      "width": 794,
+      "height": 1123,
+      "preview_description": "High Impact Retail",
+      "style_category": "retail",
+      "color_palette": ["#dc2626", "#fef3c7", "#ffffff"]
+    },
+    {
+      "id": "poster-event-1",
+      "name": "Music Festival",
+      "category": "Marketing",
+      "subcategory": "Poster",
+      "width": 1587,
+      "height": 2245,
+      "preview_description": "Bold Dynamic",
+      "style_category": "entertainment",
+      "color_palette": ["#0f172a", "#8b5cf6", "#ec4899"]
+    },
+    {
+      "id": "brochure-service-1",
+      "name": "Service Overview",
+      "category": "Marketing",
+      "subcategory": "Brochure",
+      "width": 1123,
+      "height": 794,
+      "preview_description": "Clean Corporate",
+      "style_category": "corporate",
+      "color_palette": ["#1e3a8a", "#f59e0b", "#ffffff"]
+    },
+    {
+      "id": "card-birthday-1",
+      "name": "Elegant Birthday",
+      "category": "Personal",
+      "subcategory": "Birthday Card",
+      "width": 508,
+      "height": 356,
+      "preview_description": "Sophisticated Celebration",
+      "style_category": "elegant",
+      "color_palette": ["#fdf4ff", "#be185d", "#9d174d"]
+    },
+    {
+      "id": "invitation-wedding-1",
+      "name": "Wedding Luxe",
+      "category": "Personal",
+      "subcategory": "Invitation",
+      "width": 508,
+      "height": 356,
+      "preview_description": "Classic Elegance",
+      "style_category": "luxury",
+      "color_palette": ["#fafafa", "#d4af37", "#1f2937"]
+    },
+    {
+      "id": "certificate-1",
+      "name": "Achievement Award",
+      "category": "Personal",
+      "subcategory": "Certificate",
+      "width": 792,
+      "height": 612,
+      "preview_description": "Formal Traditional",
+      "style_category": "formal",
+      "color_palette": ["#ffffff", "#d4af37", "#1f2937"]
+    }
+  ],
+  "categories": {
+    "Social Media": {
+      "subcategories": ["Instagram Post", "Facebook Cover", "LinkedIn Banner", "Twitter Post"],
+      "count": 7
+    },
+    "Business": {
+      "subcategories": ["Resume", "Presentation", "Business Card"],
+      "count": 3
+    },
+    "Marketing": {
+      "subcategories": ["Flyer", "Poster", "Brochure"],
+      "count": 3
+    },
+    "Personal": {
+      "subcategories": ["Birthday Card", "Invitation", "Certificate"],
+      "count": 3
+    }
+  }
+}

@@ -220,3 +220,103 @@ export const bulkCreateTemplates = async (req, res) => {
     res.status(500).json({ success: false, error: "Failed to bulk create templates" });
   }
 };
+
+export const getTemplateCanvas = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const template = await Template.findById(id).select('canvasData dimensions name category');
+    
+    if (!template) {
+      return res.status(404).json({ success: false, error: "Template not found" });
+    }
+    
+    template.usageCount += 1;
+    await template.save();
+    
+    res.json({
+      success: true,
+      data: {
+        canvasData: template.canvasData,
+        dimensions: template.dimensions,
+        name: template.name,
+        category: template.category
+      }
+    });
+  } catch (error) {
+    console.error("Error fetching template canvas:", error);
+    res.status(500).json({ success: false, error: "Failed to fetch template canvas" });
+  }
+};
+
+export const reseedTemplates = async (req, res) => {
+  try {
+    await Template.deleteMany({});
+    const { seedTemplates } = await import("../utils/seedTemplates.js");
+    const result = await seedTemplates();
+    res.json(result);
+  } catch (error) {
+    console.error("Error reseeding:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+export const saveAsTemplate = async (req, res) => {
+  try {
+    const { name, category, subcategory, tags, canvasData, dimensions, thumbnail, isFeatured, isPremium } = req.body;
+    
+    if (!name || !category || !canvasData) {
+      return res.status(400).json({ success: false, error: "Name, category, and canvasData are required" });
+    }
+    
+    const template = new Template({
+      name,
+      category,
+      subcategory,
+      tags: tags || [],
+      canvasData,
+      dimensions: dimensions || { width: 1080, height: 1080 },
+      thumbnail,
+      isEditable: true,
+      isFeatured: isFeatured || false,
+      isPremium: isPremium || false,
+      type: 'canvas'
+    });
+    
+    await template.save();
+    
+    res.status(201).json({
+      success: true,
+      data: template
+    });
+  } catch (error) {
+    console.error("Error saving template:", error);
+    res.status(500).json({ success: false, error: "Failed to save template" });
+  }
+};
+
+export const updateTemplateCanvas = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { canvasData, dimensions, thumbnail } = req.body;
+    
+    const updateData = { updatedAt: Date.now() };
+    if (canvasData) updateData.canvasData = canvasData;
+    if (dimensions) updateData.dimensions = dimensions;
+    if (thumbnail) updateData.thumbnail = thumbnail;
+    
+    const template = await Template.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true, runValidators: true }
+    );
+    
+    if (!template) {
+      return res.status(404).json({ success: false, error: "Template not found" });
+    }
+    
+    res.json({ success: true, data: template });
+  } catch (error) {
+    console.error("Error updating template canvas:", error);
+    res.status(500).json({ success: false, error: "Failed to update template canvas" });
+  }
+};

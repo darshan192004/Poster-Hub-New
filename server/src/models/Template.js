@@ -18,18 +18,25 @@ const templateZoneSchema = new mongoose.Schema({
   lineHeight: { type: Number },
 }, { _id: false });
 
+const dimensionsSchema = new mongoose.Schema({
+  width: { type: Number, default: 1080 },
+  height: { type: Number, default: 1080 },
+}, { _id: false });
+
 const templateSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String, required: true },
   subcategory: { type: String },
   tags: [{ type: String }],
   style: { type: String, default: "modern" },
-  type: { type: String, enum: ["gradient", "pattern", "solid", "image"], default: "gradient" },
-  width: { type: Number, default: 400 },
-  height: { type: Number, default: 500 },
+  type: { type: String, enum: ["gradient", "pattern", "solid", "image", "canvas"], default: "canvas" },
+  dimensions: { type: dimensionsSchema, default: () => ({ width: 1080, height: 1080 }) },
   backgroundStyle: { type: String },
   backgroundColor: { type: String, default: "#ffffff" },
   backgroundImage: { type: String },
+  thumbnail: { type: String },
+  canvasData: { type: mongoose.Schema.Types.Mixed },
+  isEditable: { type: Boolean, default: true },
   isPremium: { type: Boolean, default: false },
   isFeatured: { type: Boolean, default: false },
   usageCount: { type: Number, default: 0 },

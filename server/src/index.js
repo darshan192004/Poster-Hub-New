@@ -10,6 +10,7 @@ import posterRoutes from "./routes/posterRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import templateRoutes from "./routes/templateRoutes.js";
+import { seedTemplates } from "./utils/seedTemplates.js";
 
 dotenv.config();
 
@@ -20,9 +21,10 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 // ✅ CORS config
+const corsOrigin = process.env.CORS_ORIGIN || "http://localhost:5173";
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
+    origin: corsOrigin === "*" ? true : corsOrigin,
     credentials: true,
   })
 );
@@ -45,6 +47,9 @@ const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("✅ MongoDB connected");
+    
+    // Seed templates if database is empty
+    await seedTemplates();
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error);
     process.exit(1);
